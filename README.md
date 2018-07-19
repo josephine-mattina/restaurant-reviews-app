@@ -3,7 +3,7 @@
 
 ## Project Overview
 
-The spec for this **Restaurant Reviews** project for the Udacity Front End Web Development Nanodegree was to incrementally convert a static webpage to a mobile-ready web application. The static design lacked accessibility and was not responsive.
+The spec for this **Restaurant Reviews** project for the Udacity Front End Web Development Nanodegree was to incrementally convert a static webpage to a **mobile-ready web application**. The static design lacked accessibility and was not responsive.
 
 The purpose was to demonstrate how to add responsive CSS so the application is **responsive** and implement accessibility features in the site HTML to ensure it is **accessible** for screen reader use.
 
@@ -28,6 +28,12 @@ To begin a seamless **offline experience** for users, a **service worker** also 
 
 - [leafletjs](https://leafletjs.com/) with [Mapbox](https://www.mapbox.com/)
 
+- [Udacity Benefits of Offline First](https://classroom.udacity.com/nanodegrees/nd001/parts/e4e4c31c-2348-4382-826f-caac197d6f5f/modules/83c4bddc-b362-4e71-8fa1-91f30ba57ab0/lessons/6370369679/concepts/63794801310923)
 
+- [Udacity Introducing the Service Worker](https://classroom.udacity.com/nanodegrees/nd001/parts/e4e4c31c-2348-4382-826f-caac197d6f5f/modules/83c4bddc-b362-4e71-8fa1-91f30ba57ab0/lessons/6381510081/concepts/63885494530923)
 
+- [Adding a Service Worker](https://developers.google.com/web/fundamentals/codelabs/offline/?authuser=1)
 
+- [WAI-ARIA Implementation Guide](https://www.w3.org/TR/wai-aria-implementation/)
+
+- [CSS Grids](https://css-tricks.com/snippets/css/complete-guide-grid/)
