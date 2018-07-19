@@ -1,8 +1,8 @@
 // Cache all the app assets
-self.addEventListener('install', function(event) {
+self.addEventListener('install', event => {
 
   event.waitUntil(
-    caches.open('static_v1').then(function(cache) {
+    caches.open('static_v1').then(cache => {
       return cache.addAll([
         '/',
         'index.html',
@@ -28,11 +28,12 @@ self.addEventListener('install', function(event) {
 });
 
 // Return the cached assets if there is a cache available
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', event => {
+    // Handle restaurant page requests
+    const request = event.request.url.includes('restaurant.html')
+    ? new Request('restaurant.html') : event.request;
 
-	event.respondWith(
-		caches.match(event.request).then(function(response) {
-		 return response || fetch(event.request);
-		})
-	);
+    event.respondWith(
+        caches.match(request).then(response => response || fetch(request))
+    );
 });
