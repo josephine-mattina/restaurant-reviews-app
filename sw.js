@@ -1,23 +1,23 @@
-const staticCacheName = 'restaurant-cache-v25';
+const staticCacheName = 'restaurant-cache-v29';
 let cacheFiles = [
     '/',
-    'index.html',
-    'restaurant.html',
-    'data/restaurants.json',
-    'js/dbhelper.js',
-    'js/main.js',
-    'js/restaurant_info.js',
-    'css/styles.css',
-    'img/1.jpg',
-    'img/10.jpg',
-    'img/2.jpg',
-    'img/3.jpg',
-    'img/4.jpg',
-    'img/5.jpg',
-    'img/6.jpg',
-    'img/7.jpg',
-    'img/8.jpg',
-    'img/9.jpg'
+    './index.html',
+    './restaurant.html',
+    './data/restaurants.json',
+    './js/dbhelper.js',
+    './js/main.js',
+    './js/restaurant_info.js',
+    './css/styles.css',
+    './img/1.jpg',
+    './img/10.jpg',
+    './img/2.jpg',
+    './img/3.jpg',
+    './img/4.jpg',
+    './img/5.jpg',
+    './img/6.jpg',
+    './img/7.jpg',
+    './img/8.jpg',
+    './img/9.jpg',
 ]
 
 // Cache all the app assets
@@ -60,30 +60,20 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', e => {
     console.log('[ServiceWorker] Fetching', e.request.url);
     // Handle home page requests
-    const requestUrl = new URL(e.request.url);
-    // debugger;
-    if (requestUrl.origin === location.origin) {
-        if (requestUrl.pathname === 'index.html') {
-            e.respondWith(caches.match('/'));
-            return;
-        }
-    }
+
 
 
 
     // Handle restaurant page requests
-    const request = e.request.url.includes('restaurant.html')
-    ? new Request('restaurant.html') : e.request;
+    // const request = e.request.url.includes('restaurant.html')
+    // ? new Request('restaurant.html') : e.request;
 
     e.respondWith(
-        caches.match(request).then(response => {
+        caches.match(e.request).then(response => {
             console.log('[ServiceWorker] Found in cache', e.request.url);
-            return response || fetch(request)
+            return response || fetch(e.request);
         })
-    );
-
-
-    
+    );   
 });
 
 // self.addEventListener('fetch', event => {
@@ -156,4 +146,51 @@ self.addEventListener('fetch', e => {
 
     // event.respondWith(
     //     caches.match(event.request).then(response => response || fetch(event.request))
+
     // );
+
+
+// self.addEventListener('install', function(event) {
+//   //perform install steps
+//   event.waitUntil(
+//     //wait until the following is cached - then install is complete
+//     caches.open('static-v1').then(function(cache) {
+//       //open the cache add all elements below
+//       return cache.addAll([
+//         './',
+//         './index.html',
+//         './restaurant.html',
+//         './css/styles.css',
+//         './js/main.js',
+//         './js/restaurant_info.js',
+//         './js/dbhelper.js',
+//         './img/1.jpg',
+//         './img/2.jpg',
+//         './img/3.jpg',
+//         './img/4.jpg',
+//         './img/5.jpg',
+//         './img/6.jpg',
+//         './img/7.jpg',
+//         './img/8.jpg',
+//         './img/9.jpg',
+//         './img/10.jpg',
+//       ]);
+//     })
+//   );
+// });
+
+// //fetch the cache when required
+// self.addEventListener('fetch',function(event) {
+//   event.respondWith(
+//     //reposind to the request with the following
+//     caches.match(event.request)
+//     .then(function(response) {
+//     return response || fetch(event.request).then(function (response) {
+//       return caches.open('static-v1').then(function (cache) {
+//         cache.put(event.request, response.clone());
+//         return response;
+//       });
+//     });
+//   })
+// );
+// });
