@@ -1,4 +1,4 @@
-const staticCacheName = 'restaurant-cache-v31';
+const staticCacheName = 'restaurant-cache-v32';
 let cacheFiles = [
     './',
     './index.html',
@@ -71,7 +71,7 @@ self.addEventListener('fetch', e => {
             // If not found in the cache, when fetched first time cache as well
             var requestClone = e.request.clone();
 
-            fetch(requestClone)
+            return fetch(requestClone)
             .then(function(response) {
                 // If no response
                 if(!response) {
@@ -81,7 +81,7 @@ self.addEventListener('fetch', e => {
                 // If response, clone response
                 var responseClone = response.clone();
                 // Open the cache again
-                caches.open(staticCacheName)
+                return caches.open(staticCacheName)
                 .then(function(cache) {
                     // Put request and response clone into cache
                     cache.put(e.request, responseClone);
