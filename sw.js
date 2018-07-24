@@ -1,4 +1,4 @@
-const staticCacheName = 'restaurant-cache-v30';
+const staticCacheName = 'restaurant-cache-v31';
 let cacheFiles = [
     './',
     './index.html',
@@ -30,7 +30,7 @@ self.addEventListener('install', event => {
             return cache.addAll(cacheFiles);
         })
         .catch(err => {
-            console.log('[ServiceWorker] Error caching files');
+            console.log('[ServiceWorker] Error caching files' + err);
         })
     );
 });
